@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{385B7884-AA72-49B9-A902-CE1326FA53BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.libera.core", "Common\com.libera.core\com.libera.core.csproj", "{0F4B4B7B-D7FA-496C-89D5-9ED43E4B904C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.libera.models", "Common\com.libera.models\com.libera.models.csproj", "{A9A879BD-C0C5-4997-ADA8-E38094A0B0D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.libera.services", "Common\com.libera.services\com.libera.services.csproj", "{0D30AC78-F326-49BF-AA04-5FC09C58CAC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{46DAC8FB-2653-4006-88E7-74B4AAFE51AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.libera.tests", "Test\com.libera.tests\com.libera.tests.csproj", "{8FE001B3-5513-4841-99B1-99D1D8905EF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{AF633533-9659-4336-A3ED-0FAF2165F556}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.libera.api", "Apis\com.libera.api\com.libera.api.csproj", "{BF38F64F-CA6D-4F7B-B002-663361FEF85F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F4B4B7B-D7FA-496C-89D5-9ED43E4B904C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4B4B7B-D7FA-496C-89D5-9ED43E4B904C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4B4B7B-D7FA-496C-89D5-9ED43E4B904C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4B4B7B-D7FA-496C-89D5-9ED43E4B904C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9A879BD-C0C5-4997-ADA8-E38094A0B0D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9A879BD-C0C5-4997-ADA8-E38094A0B0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9A879BD-C0C5-4997-ADA8-E38094A0B0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9A879BD-C0C5-4997-ADA8-E38094A0B0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D30AC78-F326-49BF-AA04-5FC09C58CAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D30AC78-F326-49BF-AA04-5FC09C58CAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D30AC78-F326-49BF-AA04-5FC09C58CAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D30AC78-F326-49BF-AA04-5FC09C58CAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE001B3-5513-4841-99B1-99D1D8905EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE001B3-5513-4841-99B1-99D1D8905EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE001B3-5513-4841-99B1-99D1D8905EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE001B3-5513-4841-99B1-99D1D8905EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF38F64F-CA6D-4F7B-B002-663361FEF85F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF38F64F-CA6D-4F7B-B002-663361FEF85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF38F64F-CA6D-4F7B-B002-663361FEF85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF38F64F-CA6D-4F7B-B002-663361FEF85F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0F4B4B7B-D7FA-496C-89D5-9ED43E4B904C} = {385B7884-AA72-49B9-A902-CE1326FA53BB}
+		{A9A879BD-C0C5-4997-ADA8-E38094A0B0D1} = {385B7884-AA72-49B9-A902-CE1326FA53BB}
+		{0D30AC78-F326-49BF-AA04-5FC09C58CAC3} = {385B7884-AA72-49B9-A902-CE1326FA53BB}
+		{8FE001B3-5513-4841-99B1-99D1D8905EF4} = {46DAC8FB-2653-4006-88E7-74B4AAFE51AA}
+		{BF38F64F-CA6D-4F7B-B002-663361FEF85F} = {AF633533-9659-4336-A3ED-0FAF2165F556}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61BEE4F3-8AF3-48FF-800D-2CB8452D41B7}
+	EndGlobalSection
+EndGlobal
