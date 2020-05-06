@@ -1,5 +1,6 @@
 ﻿using com.libera.core;
 using com.libera.models.Entities;
+using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -105,6 +106,7 @@ namespace com.libera.services
                     change.Add(currentCoin);
                     amountToChange -= currentCoin.Quantity * currentCoin.Type.Value;
                 }
+                await AdjustTillAsync(change, userId, applicationId);
                 reply.Response = change;
             }
             catch(Exception exc)
@@ -173,10 +175,33 @@ namespace com.libera.services
 
         public async Task ClearTillAsync(long userId, long applicationId)
         {
-            var till = (await repo.GetEnumerableAsync<Coin>(null, userId, applicationId)).Response;
-            till.ToList().ForEach(async (coin) => {
-                await repo.DeleteAsync<Coin>(coin.ID, userId, applicationId);
-            });
+            await Connection.DeleteAllAsync<Coin>();
+        }
+
+        public async Task<IStandardReply<decimal>> GetTillCurrentAmount(long userId, long applicationId)
+        {
+            IStandardReply<decimal> reply = StandardReply<decimal>.CreateInstance();
+            var till = await GetTillAsync(userId, applicationId);
+            reply.Response = till.Response.Sum(t => t.Quantity * t.Type.Value);
+            return reply;
+        }
+
+        public async Task<IStandardReply<IEnumerable<Coin>>> AdjustTillAsync(IEnumerable<Coin> coins, long userId, long applicationId)
+        {
+            IStandardReply<IEnumerable<Coin>> reply = StandardReply<IEnumerable<Coin>>.CreateInstance();
+            try
+            {
+                coins.ToList().ForEach(async (coin) => {
+                    Coin lc = (await repo.GetSingleAsync<Coin>(coin.ID, userId, applicationId)).Response;
+                    lc.Quantity -= coin.Quantity;
+                    await repo.SaveAsync<Coin>(lc, userId, applicationId);
+                });
+            }
+            catch (Exception exc)
+            {
+                reply.ProcessException(exc, coins, logger, MethodBase.GetCurrentMethod().Name, false);
+            }
+            return reply;
         }
     }
 }

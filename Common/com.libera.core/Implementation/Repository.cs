@@ -15,11 +15,19 @@ namespace com.libera.core
     public partial class Repository : IRepository
     {
         private readonly ILogger logger;
-        private readonly IDbConnection conn;
+        public readonly IDbConnection conn;
+
+        public bool SoftDelete { get; set; }
+        public IDbConnection Connection { 
+            get { return conn; } 
+            set { } 
+        }
+
         public Repository(ILogger<Repository> _logger, IDbConnection _conn)
         {
             logger = _logger;
             conn = _conn;
+            SoftDelete = false;
         }
 
         public IStandardReply<T> Delete<T>(long id, long userId, long applicationId) where T : BaseClass
@@ -36,7 +44,14 @@ namespace com.libera.core
                 deleteObject.DeleteApplication = applicationId;
                 deleteObject.DeleteDate = DateTime.Now;
                 deleteObject.DeleteUser = userId;
-                conn.Update<T>(deleteObject);
+                if (SoftDelete)
+                {
+                    conn.Update<T>(deleteObject);
+                }
+                else
+                {
+                    conn.Delete<T>(deleteObject);
+                }
                 reply.Response = deleteObject;
                 reply.Messages.Add($"Deletion for id: {id} was successful.");
             }
@@ -61,7 +76,14 @@ namespace com.libera.core
                 deleteObject.DeleteApplication = applicationId;
                 deleteObject.DeleteDate = DateTime.Now;
                 deleteObject.DeleteUser = userId;
-                await conn.UpdateAsync<T>(deleteObject);
+                if (SoftDelete)
+                {
+                    await conn.UpdateAsync<T>(deleteObject);
+                }
+                else
+                {
+                    await conn.DeleteAsync<T>(deleteObject);
+                }
                 reply.Response = deleteObject;
                 reply.Messages.Add($"Deletion for id: {id} was successful.");
             }
@@ -87,7 +109,14 @@ namespace com.libera.core
                 deleteObject.DeleteApplication = applicationId;
                 deleteObject.DeleteDate = DateTime.Now;
                 deleteObject.DeleteUser = userId;
-                await conn.UpdateAsync<T>(deleteObject);
+                if (SoftDelete)
+                {
+                    await conn.UpdateAsync<T>(deleteObject);
+                }
+                else
+                {
+                    await conn.DeleteAsync<T>(deleteObject);
+                }
                 reply.Response = deleteObject;
                 reply.Messages.Add($"Deletion for id: {id} was successful.");
             }

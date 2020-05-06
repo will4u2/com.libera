@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,10 @@ namespace com.libera.core
         {
             repo = _repo;
         }
+
+        public IDbConnection Connection { get { return repo.Connection; } set { } }
+        public bool SoftDelete { get { return repo.SoftDelete; } set { } }
+
         public IStandardReply<T> Delete<T>(long id, long userId, long applicationId) where T : BaseClass
         {
             return repo.Delete<T>(id, userId, applicationId);

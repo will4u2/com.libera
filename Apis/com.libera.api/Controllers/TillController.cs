@@ -34,10 +34,7 @@ namespace com.libera.api.Controllers
         [HttpGet("amount")]
         public async Task<IStandardReply<decimal>> GetAmount()
         {
-            IStandardReply<decimal> reply = StandardReply<decimal>.CreateInstance();
-            var till = await tillService.GetTillAsync(UserId, ApplicationId);
-            reply.Response = till.Response.Sum(t => t.Quantity * t.Type.Value);
-            return reply;
+            return await tillService.GetTillCurrentAmount(UserId, ApplicationId);
         }
         [HttpPut]
         public async Task<IStandardReply<IEnumerable<Coin>>> Put([FromBody] List<Coin> coins)

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace com.libera.core
 {
     public interface IRepository
     {
+        IDbConnection Connection { get; set; }
+        bool SoftDelete { get; set; }
         IStandardReply<T> GetSingle<T>(long id, long userId, long applicationId) where T : BaseClass;
         Task<IStandardReply<T>> GetSingleAsync<T>(long id, long userId, long applicationId) where T : BaseClass;
         IStandardReply<T> GetSingle<T>(Func<T, bool> filter, long userId, long applicationId) where T : BaseClass;

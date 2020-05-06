@@ -8,6 +8,21 @@ namespace com.libera.services
     public interface ITillService
     {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="coins"></param>
+        /// <param name="userId"></param>
+        /// <param name="applicationId"></param>
+        /// <returns></returns>
+        Task<IStandardReply<IEnumerable<Coin>>> AdjustTillAsync(IEnumerable<Coin> coins, long userId, long applicationId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="applicationId"></param>
+        /// <returns></returns>
+        Task<IStandardReply<decimal>> GetTillCurrentAmount(long userId, long applicationId);
+        /// <summary>
         /// Replaces till with coins provided
         /// </summary>
         /// <param name="coins"></param>

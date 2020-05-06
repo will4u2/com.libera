@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.libera.tests", "Test\co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{AF633533-9659-4336-A3ED-0FAF2165F556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.libera.api", "Apis\com.libera.api\com.libera.api.csproj", "{BF38F64F-CA6D-4F7B-B002-663361FEF85F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.libera.api", "Apis\com.libera.api\com.libera.api.csproj", "{BF38F64F-CA6D-4F7B-B002-663361FEF85F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{7AFD4845-1423-4621-AA10-CA7A16A3D8FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
