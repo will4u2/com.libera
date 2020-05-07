@@ -125,7 +125,8 @@ namespace com.libera.services
                 usableCoin = availableCoins.FirstOrDefault(c => (amountToChange / c.Type.Value) > 1);
                 if (usableCoin != null && usableCoin.Type != null)
                 {
-                    usableCoin.Quantity = (int)(amountToChange / usableCoin.Type.Value);
+                    int newQuantity = (int)(amountToChange / usableCoin.Type.Value);
+                    usableCoin.Quantity = newQuantity < usableCoin.Quantity ? newQuantity : usableCoin.Quantity;
                 }
                 else
                 {

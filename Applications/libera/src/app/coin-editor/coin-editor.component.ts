@@ -19,6 +19,7 @@ export class CoinEditorComponent implements OnInit {
     const coinId = this.route.snapshot.params.id;
     this.tillDataService.getTill().subscribe(
       (data) => {
+        // tslint:disable-next-line: radix
         this.coin = (data as ICoin[]).find(c => c.id === parseInt(coinId));
       }
     );

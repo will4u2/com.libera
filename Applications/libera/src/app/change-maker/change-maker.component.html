@@ -1,1 +1,50 @@
-<p>change-maker works!</p>
+<div class="container-sm">
+  <form>
+    <fieldset>
+      <legend>Change maker</legend>
+      <div class="form-group input-group mb-3">
+        <label for="coinType">Amount</label>
+        <div class="input-group-prepend">
+          <span class="input-group-text">$0.</span>
+        </div>
+        <input max="99" type="number" class="form-control" name="amountToChange" id="coinType" aria-describedby="coinTypeHelp" [(ngModel)]="amountToChange">
+      </div>
+      <button (click)="getChange()" type="button" class="btn btn-primary">Get Change</button>
+      <hr />
+      <table>
+        <colgroup>
+          <col style="width: 20em;" />
+          <col style="width: 20em;" />
+          <col style="width: 20em;" />
+        </colgroup>
+        <thead>
+          <tr>
+            <td>Change</td>
+            <td>Current Till</td>
+            <td>Initial Till</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul>
+                <li *ngFor="let coin of coins">{{coin.quantity}} {{coin.type.type}}s</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li *ngFor="let coin of till">{{coin.quantity}} {{coin.type.type}}s</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li *ngFor="let coin of initialtill">{{coin.quantity}} {{coin.type.type}}s</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </fieldset>
+  </form>
+</div>
