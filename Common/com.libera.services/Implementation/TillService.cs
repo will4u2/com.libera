@@ -24,11 +24,11 @@ namespace com.libera.services
 
         public async Task<IStandardReply<Coin>> AddCoinToTillAsync(Coin coin, long userId, long applicationId)
         {
-            var result = await repo.GetSingleAsync<Coin>(coin.ID, userId, applicationId);
-            if(result != null && result.Success && result.Response != null)
-            {
-                coin.Quantity += result.Response.Quantity;
-            }
+            //var result = await repo.GetSingleAsync<Coin>(coin.ID, userId, applicationId);
+            //if(result != null && result.Success && result.Response != null)
+            //{
+            //    coin.Quantity += result.Response.Quantity;
+            //}
             return await repo.SaveAsync<Coin>(coin, userId, applicationId, c => c.CoinTypeId == coin.CoinTypeId);
         }
 

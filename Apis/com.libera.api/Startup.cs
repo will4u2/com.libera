@@ -15,6 +15,7 @@ namespace com.libera.api
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,6 +39,16 @@ namespace com.libera.api
                 .AddScoped<IRepository, Repository>()
                 .AddScoped<ICoinTypeService, CoinTypeService>()
                 .AddScoped<ITillService, TillService>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.AllowAnyHeader();
+                                      builder.AllowAnyOrigin();
+                                      builder.AllowAnyMethod();
+                                  });
+            });
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -65,6 +76,8 @@ namespace com.libera.api
             });
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 

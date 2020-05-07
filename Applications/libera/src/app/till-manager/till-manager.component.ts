@@ -10,10 +10,11 @@ import { TillDataService } from '../core/till-data.service';
   styleUrls: ['./till-manager.component.css']
 })
 export class TillManagerComponent implements OnInit {
-  displayedColumns = ['id', 'type', 'quantity', 'value'];
+  displayedColumns = ['id', 'type', 'quantity', 'value', 'total'];
   dataSource = new MatTableDataSource();
   coins: ICoin[];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  TillTotal: number;
 
   constructor(@Inject(TillDataService) private tillService: TillDataService) { }
 
@@ -24,6 +25,7 @@ export class TillManagerComponent implements OnInit {
         console.log(data);
         this.coins = (data as ICoin[]);
         this.dataSource.data = (data as ICoin[]);
+        this.TillTotal = this.coins.reduce((total, coin) => total + (coin.quantity * coin.type.value), 0);
       }
     );
   }

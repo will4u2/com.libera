@@ -16,9 +16,5 @@
     <ProjectReference Include="..\..\Common\com.libera.services\com.libera.services.csproj" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd ../Application/libera/&#xD;&#xA;ng serve --port 9200 --open" />
-  </Target>
-
 
 </Project>

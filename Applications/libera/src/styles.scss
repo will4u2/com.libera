@@ -114,3 +114,10 @@ a.icon {
   bottom: 0;
   right: 0;
 }
+.form-group {
+  position: relative;
+}
+.form-group>button[type='submit'] {
+  position: absolute;
+  right: 0;
+}

@@ -1,0 +1,32 @@
+<div class="container">
+  <form (ngSubmit)="saveCoins()">
+    <fieldset>
+      <legend>Coin Information</legend>
+      <div class="form-group">
+        <label for="coinType">Coin Type</label>
+        <input type="text" class="form-control" id="coinType" aria-describedby="coinTypeHelp" readonly="readonly" value="{{coin && coin.type.type}}">
+        <small id="coinTypeHelp" class="form-text text-muted">Type of coin.</small>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" aria-describedby="quantityHelp" [(ngModel)]="coin && coin.quantity">
+        <small id="quantityHelp" class="form-text text-muted">Quanity of this type of coin.</small>
+      </div>
+      <div class="form-group">
+        <label for="value">Value per</label>
+        <input type="text" class="form-control" id="value" aria-describedby="valueHelp" readonly="readonly" value="{{coin && coin.type.value | currency}}">
+        <small id="valueHelp" class="form-text text-muted">Type of coin.</small>
+      </div>
+      <div class="form-group">
+        <label for="total">Total</label>
+        <input type="text" class="form-control" id="total" aria-describedby="totalHelp" readonly="readonly" value="{{coin && coin.quantity * coin.type.value | currency}}">
+        <small id="totalHelp" class="form-text text-muted">Type of coin.</small>
+      </div>
+      <div class="form-group">
+        <a [routerLink]="['']" type="button" class="btn btn-primary">Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </fieldset>
+  </form>
+  <pre *ngIf="production === false">{{ coin | json }}</pre>
+</div>

@@ -2,18 +2,32 @@
   <mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-      <mat-cell *matCellDef="let coin">{{coin.id}}</mat-cell>
+      <mat-cell *matCellDef="let coin"><a [routerLink]="['ce', coin.id]">{{coin.id}}</a></mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
     </ng-container>
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
       <mat-cell *matCellDef="let coin">{{coin.type.type}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
     </ng-container>
     <ng-container matColumnDef="quantity">
       <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
       <mat-cell *matCellDef="let coin">{{coin.quantity}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="value">
+      <mat-header-cell *matHeaderCellDef>Per</mat-header-cell>
+      <mat-cell *matCellDef="let coin">{{coin.type.value | currency}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef><div style="text-align: right; width: 100%; margin-right: 1em;">Total:</div></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <mat-header-cell *matHeaderCellDef>Value</mat-header-cell>
+      <mat-cell *matCellDef="let coin">{{coin.quantity * coin.type.value | currency}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef>{{TillTotal | currency}}</mat-footer-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-footer-row *matFooterRowDef="displayedColumns;"></mat-footer-row>
   </mat-table>
   <mat-paginator [pageSizeOptions]="[15, 20, 30]" showFirstLastButtons></mat-paginator>
 </div>

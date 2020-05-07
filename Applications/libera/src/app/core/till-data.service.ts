@@ -14,10 +14,14 @@ export class TillDataService {
   constructor(private http: HttpClient) { }
 
   getTill(): Observable<ICoin[] | IStandardError> {
-    return this.http.get<ICoin[]>(environment.apiBaseUrl + '/till/')
+    return this.http.get<ICoin[]>(environment.apiBaseUrl + '/till')
       .pipe(
         catchError(err => this.handleHttpError(err))
       );
+  }
+
+  patchTill(coins: ICoin[]) {
+    return this.http.patch(environment.apiBaseUrl + '/till', coins);
   }
 
   private handleHttpError(error: HttpErrorResponse): Observable<IStandardError> {
